@@ -1,4 +1,4 @@
-###Instalation
+<h3>Installation</h3>
 
 Download following files:
 * twilio_functions.py
@@ -15,7 +15,7 @@ pip3 install -r /path/to/requirements.txt
 ```
 If you are using PyCharm IDE you may need to set-up Interpreter before running the script. [Here](https://www.jetbrains.com/help/pycharm/configuring-python-interpreter.html#add-existing-interpreter) you can find info how to set up local interpreter. <br>
 
-###Using Script
+<h3>Using Script</h3>
 Once requirements are installed, you can proceed and run <i>twilio_skill_input.csv</i> file by opening <i>twilio_skills_main.py</i> and clicking run.
 
 Make sure that your <i>twilio_skill_input.csv</i> file is structured in a following way
