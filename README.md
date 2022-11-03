@@ -7,11 +7,11 @@ Download following files:
 
 Make sure you have <b> python </b> installed on your computer.
 You can find installation [here](https://www.python.org/downloads/). <br>
-If you own PC and install python on your own without UT help, make sure to select <b><i> Custom install -> only this user </i></b> during installation to avoid access issues.
+If you use Windows OS and install Python on your own without UT help, make sure to select <b><i> Custom install -> only this user </i></b> during installation to avoid access issues.
 
 Once Python is installed run following command in terminal/command prompt:
 ```commandline
-pip3 install -r /path/to/requirements.txt
+pip3 install -r requirements.txt
 ```
 If you are using PyCharm IDE you may need to set-up Interpreter before running the script. [Here](https://www.jetbrains.com/help/pycharm/configuring-python-interpreter.html#add-existing-interpreter) you can find info how to set up local interpreter. <br>
 
