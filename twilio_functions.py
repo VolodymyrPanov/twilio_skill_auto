@@ -119,7 +119,9 @@ def add_delete(driver, df, existing_skills):
             driver.find_element(By.XPATH,'//input[@class="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart"]').send_keys(Keys.ENTER)
             driver.find_element(By.XPATH, "//span[text()='{}']/ancestor::div[@role='button']".format(name)).click()
         except Exception:
-            pass
+            print(f"{name} was not found or something else went wrong")
+            df.loc[i, 'outcome'] = 'not found'
+            continue
         try:
             driver.find_element(By.XPATH, '//button[@class="ant-btn"]').click()
         except:
@@ -127,20 +129,19 @@ def add_delete(driver, df, existing_skills):
         action = row['action'].strip()
         if action == 'add':
             try:
-                add_skill(driver, row['skill'], row['name'], existing_skills)
+                add_skill(driver, row['skill'], name, existing_skills)
                 df.loc[i, 'outcome'] = 'success'
             except Exception:
                 df.loc[i, 'outcome'] = 'fail'
                 pass
         elif action == 'delete':
             try:
-                outcome = delete_skill(driver, row['skill'], row['name'], existing_skills)
+                outcome = delete_skill(driver, row['skill'], name, existing_skills)
                 df.loc[i, 'outcome'] = outcome
             except Exception:
                 df.loc[i, 'outcome'] = 'fail'
                 pass
     return df
-
 
 
 
