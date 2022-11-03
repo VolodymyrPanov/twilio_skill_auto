@@ -18,11 +18,11 @@ If you are using PyCharm IDE you may need to set-up Interpreter before running t
 <h3>Using Script</h3>
 Once requirements are installed, you can proceed and run <i>twilio_skill_input.csv</i> file by opening <i>twilio_skills_main.py</i> and clicking run.
 
-Make sure that your <i>twilio_skill_input.csv</i> file is structured in a following way
+Make sure that your <i>twilio_skill_input.csv</i> file is structured in a following way:
 ```
 name,skill,action,outcome
 Felipe Saito,ContactReason_Verification,delete,nope
 Felipe Saito,ContactReason_Verification,add,nope
 ```
-
+If agent's alias on Twilio contains special character make sure to include them in the input file.
 
