@@ -13,7 +13,7 @@ options = Options()
 options.add_argument("--window-size=1920,1080")
 options.add_argument("--start-maximized")
 options.add_argument("--headless")
-driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+driver = webdriver.Chrome(ChromeDriverManager(latest_release_url='https://chromedriver.storage.googleapis.com/LATEST_RELEASE_107').install(), options=options)
 driver.implicitly_wait(5)
 
 # <editor-fold desc="Description">
