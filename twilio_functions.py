@@ -13,8 +13,26 @@ def launch_set_up(driver, username, password, okta):
     driver.find_element(By.ID, 'okta-signin-password').send_keys(password)
     driver.find_element(By.ID, 'okta-signin-password').send_keys(Keys.ENTER)
     time.sleep(1)
-    driver.find_element(By.ID, 'input67').send_keys(okta)
-    driver.find_element(By.ID, 'input67').send_keys(Keys.ENTER)
+    
+        try:
+        driver.find_element(By.ID, 'input67').send_keys(okta)
+        driver.find_element(By.ID, 'input67').send_keys(Keys.ENTER)
+    except:
+        while True:
+            try:
+                button = wait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, '//input[@class="button button-primary"]')))
+                break
+            except TimeoutException:
+                time.sleep(0.2)
+        button.click()
+
+    while True:
+        try:
+            wait(driver, 1).until(EC.presence_of_element_located((By.XPATH, "//h1[@class='dashboard--my-apps-title']")))
+            break
+        except TimeoutException:
+            time.sleep(0.2)
+            
     driver.execute_script("window.open('');")
     windows = driver.window_handles
     driver.switch_to.window(windows[1])
