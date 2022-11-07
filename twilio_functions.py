@@ -1,3 +1,4 @@
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait as wait
@@ -54,7 +55,8 @@ def launch_set_up(driver, username, password, okta):
             button = wait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, '//button[@class="ant-btn"]')))
             break
         except TimeoutException:
-            time.sleep(1)
+            print('skip button not found')
+            time.sleep(0.2)
     button.click()
 
     driver.find_element(By.XPATH, '//button[@class="MuiButtonBase-root MuiButton-root MuiButton-contained Twilio-Button css-1rjnz87 MuiButton-containedSecondary"]').click()
@@ -67,15 +69,15 @@ def launch_set_up(driver, username, password, okta):
     driver.find_element(By.XPATH, '//input[@class="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart"]').send_keys(Keys.ENTER)
     time.sleep(1)
     driver.find_element(By.XPATH, "//span[text()='Felipe Saito']/ancestor::div[@role='button']").click()
-    while True:
-        try:
-            button = wait(driver, 1).until(EC.presence_of_element_located((By.XPATH, '//button[@class="ant-btn"]')))
-            break
-        except TimeoutException:
-            print('no element')
-            time.sleep(1)
-    button.click()
+
+    try:
+        button = wait(driver, 1).until(EC.presence_of_element_located((By.XPATH, '//button[@class="ant-btn"]')))
+        button.click()
+    except Exception:
+        pass
+
     driver.find_element(By.XPATH, "//span[@class='Twilio' and text() = 'Add skill']/parent::div").click()
+
     existing_skills = []
     for elem in driver.find_elements(By.XPATH, '//li[@class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"]/following::span[@class="Twilio"]'):
         existing_skills.append(elem.text)
@@ -159,3 +161,6 @@ def add_delete(driver, df, existing_skills):
                 df.loc[i, 'outcome'] = 'fail'
                 pass
     return df
+
+
+
