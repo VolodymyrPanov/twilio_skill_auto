@@ -14,7 +14,7 @@ def launch_set_up(driver, username, password, okta):
     driver.find_element(By.ID, 'okta-signin-password').send_keys(Keys.ENTER)
     time.sleep(1)
     
-        try:
+    try:
         driver.find_element(By.ID, 'input67').send_keys(okta)
         driver.find_element(By.ID, 'input67').send_keys(Keys.ENTER)
     except:
